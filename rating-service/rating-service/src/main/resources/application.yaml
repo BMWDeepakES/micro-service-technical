@@ -1,0 +1,9 @@
+#sever:
+#  port: 9094
+#spring:
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: micro-rating
+

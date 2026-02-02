@@ -2,6 +2,8 @@ server:
   port: 9092
 
 spring:
+  profiles:
+    active: dev
   application:
     name: user-service
   datasource:
@@ -16,14 +18,50 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+  config:
+    import: optional:configserver:http://localhost:9097
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      ratingHotelBreaker:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 6s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+  retry:
+    instances:
+      ratingHotelBreaker:
+        max-attempts: 3
+        wait-duration: 5s
+  ratelimiter:
+    instances:
+      userRateLimiter:
+        limit-refresh-period: 5s
+        limit-for-period: 2
+        timeout-duration: 0s
+
 
 rating:
   getByUserId: http://RATING-SERVICE/api/rating/user/rating/

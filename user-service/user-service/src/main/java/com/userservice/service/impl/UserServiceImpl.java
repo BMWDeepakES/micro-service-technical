@@ -4,6 +4,7 @@ import com.userservice.client.HotelFeignClient;
 import com.userservice.client.RatingFeignClient;
 import com.userservice.client.WebClientConfig;
 import com.userservice.dto.Hotel;
+import com.userservice.dto.UserRatingResponse;
 import com.userservice.dto.UserRequest;
 import com.userservice.dto.UserResponse;
 import com.userservice.exception.exceptionhandler.UserCreateException;
@@ -16,6 +17,8 @@ import com.userservice.repository.UserRepository;
 import com.userservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -27,9 +30,7 @@ import reactor.core.publisher.Mono;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
@@ -52,39 +53,52 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse getUserById(String id) {
-        try {
+//        try {
             Optional<User> user = userRepository.findById(id);
             if(user.isPresent()) {
                 // fetch http://localhost:9094/api/rating/186575a1-d4d6-4332-ad4a-bddbaa044176
                 //Get User Rating
                List<Rating> userRating = fetchUserRating(user.get().getUserId());
+               generateRatingReport(user.get(),userRating);
                 return userMapper.addRatingByEntity(user.get(),userRating);
             } else {
                 throw new UserNotFoundException("User not exits with id " + id);
             }
+//        } catch (Exception e) {
+//            log.error("User fetch exception with id {} ",id);
+//            throw new UserNotFoundException("User not exits with id " + id);
+//        }
+    }
+
+    private void generateRatingReport(User user, List<Rating> userRating) {
+        try {
+            String userReportPath = "/hotel_rating_report.jrxml";
+            HashMap<String, Object> ratingReportMap = new HashMap<String, Object>();
+            ratingReportMap.put("hotelName",user.getName());
+            UserRatingResponse userRatingResponse = userMapper.ratingReponseMapper(user, userRating);
+            List<UserRatingResponse> userRatingResponseList = new ArrayList<>();
+            userRatingResponseList.add(userRatingResponse);
+
+            JRBeanCollectionDataSource dataSourceRatingList = new JRBeanCollectionDataSource(userRatingResponseList);
+            JasperReport userReport = JasperCompileManager.compileReport(userReportPath);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(userReport,ratingReportMap,dataSourceRatingList);
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"D:\\Microservice Practic\\jasperreports\\userReportdownload.pdf");
         } catch (Exception e) {
-            log.error("User fetch exception with id {} ",id);
-            throw new UserNotFoundException("User not exits with id " + id);
+
         }
     }
 
     private List<Rating> fetchUserRating(String userId) {
         String url = getUserRatingServiceURL + userId;
         List<Rating> ratings = new ArrayList<>();
-        try {
-//            ratings = webClient.build().get()
-//                    .uri(url)
-//                    .retrieve()
-//                    .bodyToFlux(Rating.class)
-//                    .collectList()
-//                    .block();
+//        try {
             ratings = ratingFeignClient.getUserRatingsById(userId);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            if(e.getMessage().contains("404")) {
-            log.info("Empty Response for id");
-            }
-        }
+//        } catch (Exception e) {
+//            log.error(e.getMessage());
+//            if(e.getMessage().contains("404")) {
+//            log.info("Empty Response for id");
+//            }
+//        }
         if(ratings.size() > 1) {
             ratings.stream().map(this::getHotelDetails).collect(Collectors.toList());
         }
@@ -92,13 +106,6 @@ public class UserServiceImpl implements UserService {
     }
 
     private Rating getHotelDetails(Rating rating) {
-//        String url = hotelUrl + rating.getHotelId();
-//        Hotel hotel = webClient.build().get()
-//                .uri(url)
-//                .retrieve()
-//                .bodyToMono(Hotel.class)
-//                .block();
-//        rating.setHotel(hotel);
         Hotel hotel = hotelFeignClient.getHotel(rating.getHotelId());
         rating.setHotel(hotel);
         return rating;

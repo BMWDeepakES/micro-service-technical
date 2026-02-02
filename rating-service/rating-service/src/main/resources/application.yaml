@@ -1,9 +1,11 @@
-#sever:
-#  port: 9094
-#spring:
-#  data:
-#    mongodb:
-#      host: localhost
-#      port: 27017
-#      database: micro-rating
+server:
+  port: 9094
+spring:
+  application:
+    name: RATING-SERVICE
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/micro-rating
+  config:
+    import: optional:configserver:http://localhost:9097
 

@@ -1,6 +1,7 @@
 package com.userservice.mapper;
 
 import com.userservice.dto.AddressRequest;
+import com.userservice.dto.UserRatingResponse;
 import com.userservice.dto.UserRequest;
 import com.userservice.dto.UserResponse;
 //import com.userservice.model.Address;
@@ -60,5 +61,13 @@ public class UserMapper {
         UserResponse response = mapUserToUserResponse(user);
         response.setRatings(rating);
         return response;
+    }
+
+    public UserRatingResponse ratingReponseMapper(User user, List<Rating> ratings) {
+           return UserRatingResponse.builder()
+                   .userName(user.getName())
+                   .hotelName(ratings.get(0).getHotel().getName())
+                   .ratings(ratings.get(0).getRating())
+                   .build();
     }
 }

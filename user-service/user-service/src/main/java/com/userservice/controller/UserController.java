@@ -4,6 +4,9 @@ import com.userservice.dto.UserRequest;
 import com.userservice.dto.UserResponse;
 import com.userservice.model.User;
 import com.userservice.service.UserService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,10 +28,15 @@ import java.util.stream.Stream;
 public class UserController {
 
     private final UserService userService;
-
+    int count=1;
     @GetMapping("/{id}")
+    @CircuitBreaker(name = "ratingHotelBreaker", fallbackMethod = "ratingHotelFallback")
+//    @Retry(name = "ratingHotelBreaker", fallbackMethod = "ratingHotelFallback")
+//    @RateLimiter(name = "userRateLimiter", fallbackMethod = "ratingHotelFallback")
     public ResponseEntity<UserResponse> getUser(@PathVariable String id) {
       log.info("Get User by id {}",id);
+      System.out.println("Count "+count);
+      count++;
       return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
     }
 
@@ -75,4 +83,17 @@ public class UserController {
 //        User userRespone = userService.getUserByRelation(id);
 //        return userRespone;
 //    }
+
+//     creating fallback method for circuitbreaker
+    public ResponseEntity<UserResponse> ratingHotelFallback(String id,Throwable ex) {
+        log.info("Fall back is called with id {} error is {}",id,ex.getMessage());
+        UserResponse userResponse = UserResponse.builder()
+                .userId("dummyId")
+                .about("dummy about us")
+                .email("dummy@mail.com")
+                .name("dummy name")
+                .build();
+        return new ResponseEntity<>(userResponse,HttpStatus.OK);
+    }
+
 }

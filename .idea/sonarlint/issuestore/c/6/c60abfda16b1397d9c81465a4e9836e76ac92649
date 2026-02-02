@@ -1,0 +1,8 @@
+
+w	java:S125"<This block of commented-out lines of code should be removed.(İä•ŒJ$7f65e88b-f4d8-4671-b7c0-301340624597
+x
+java:S1128"7Remove this unused import 'com.userservice.model.User'.(‘…»´øÿÿÿÿJ$1881de4c-2a29-4833-a61d-0970212be19d
+
+java:S1128"LRemove this unused import 'org.springframework.web.multipart.MultipartFile'.(ôŸœÿÿÿÿÿJ$2ad9046c-87b5-4814-8222-c2c76e67b1bf
+
+java:S1128	"CRemove this unused import 'java.util.concurrent.CompletableFuture'.(ôŞä´J$ef924430-b5c5-461d-8bfd-fbc06d009623

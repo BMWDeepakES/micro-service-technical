@@ -1,26 +1,27 @@
 
 ¡
-java:S2293L"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ç»Ùàþÿÿÿÿ8ž‚ÙîÁ3J$9e294f2f-ee05-41dc-b04d-a472b9fe04e3
-~	java:S125"<This block of commented-out lines of code should be removed.(Œ·üú8¹‚ÙîÁ3J$2fec185a-171c-41e2-bc69-d019e317bce6
-ƒ	java:S1258"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8¿‚ÙîÁ3J$2a715366-c564-4327-97d9-4b394c89dbb4
-~	java:S125C"<This block of commented-out lines of code should be removed.(ñ±™Œ8Â‚ÙîÁ3J$f7cfeb34-2f8c-405d-8cab-34426d3d6dd4
-‰
-java:S1075K"ARefactor your code to get this URI from a customizable parameter.(á…¦Žüÿÿÿÿ8Ä‚ÙîÁ3J$ba086c4e-70bd-49d7-bfd5-bbfd5f6dbd08
-k	java:S108V")Either remove or fill this block of code.(”ý¾8È‚ÙîÁ3J$6b98bbcf-769e-4f32-8109-f2b8749f0f01
+java:S2293J"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ç»Ùàþÿÿÿÿ8‹Æã’Â3J$0e08c55c-d3e1-47fd-b721-09822f47b969
+~	java:S125"<This block of commented-out lines of code should be removed.(Œ·üú8²Æã’Â3J$01fd5ccf-de89-460b-b1a9-1aaa6e28a7ec
+ƒ	java:S1253"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8·Æã’Â3J$2d35f383-fd05-4fd8-862e-3f134f48ba48
+~	java:S125>"<This block of commented-out lines of code should be removed.(ñ±™Œ8»Æã’Â3J$6c692130-ca0a-450e-925d-61b6f4277a87
+Š
+java:S1854F"BRemove this useless assignment to local variable "userReportPath".(ðŽ’éÿÿÿÿÿ8½Æã’Â3J$d5ea56ce-34b1-4d3d-a87e-718fc25c51a1
+{
+java:S1481F"3Remove this unused "userReportPath" local variable.(ðŽ’éÿÿÿÿÿ8¾Æã’Â3J$9a341207-f172-4719-acd3-0bcb09bf16ec
 ƒ
-java:S1854]";Remove this useless assignment to local variable "ratings".(ð”¾¼ÿÿÿÿÿ8É‚ÙîÁ3J$bffb07c1-cfeb-4663-b23b-7d52c3844c55
+java:S1854[";Remove this useless assignment to local variable "ratings".(ð”¾¼ÿÿÿÿÿ8ÆÆã’Â3J$a7ee5428-d2be-447c-bd88-844fa7598e78
 
-java:S1854\"7Remove this useless assignment to local variable "url".(äæœüÿÿÿÿ8É‚ÙîÁ3J$05f57904-9ced-4625-9eb4-fcb5785aaef1
+java:S1854Z"7Remove this useless assignment to local variable "url".(äæœüÿÿÿÿ8ÆÆã’Â3J$959e0aa1-e704-477f-a95b-fb24ab3f1533
 p
-java:S1481\"(Remove this unused "url" local variable.(äæœüÿÿÿÿ8Ê‚ÙîÁ3J$8085ce69-dc01-4b41-a7e7-d4aa1c25867d
-ƒ	java:S125^"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8Ë‚ÙîÁ3J$9364c70c-072b-4293-8c94-7b263c26efa0
-~	java:S125`"<This block of commented-out lines of code should be removed.(ñ±™Œ8Ë‚ÙîÁ3J$b56d0de6-8867-493f-8ce7-9a7251ccd2a8
+java:S1481Z"(Remove this unused "url" local variable.(äæœüÿÿÿÿ8ÇÆã’Â3J$9f0e7d09-d4ec-43cf-8822-bf4129c03470
+ƒ	java:S125\"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8ÈÆã’Â3J$8ab2552f-f010-4dcc-b55d-1814d1fe6745
+~	java:S125^"<This block of commented-out lines of code should be removed.(ñ±™Œ8ÈÆã’Â3J$190e50d0-6b63-4383-bde5-96c5ef6a6d1b
 s
-java:S2201g"+The return value of "collect" must be used.(Šè„üþÿÿÿÿ8Ì‚ÙîÁ3J$97637aaf-f6c4-4c0e-a685-7d232d257b1e
+java:S2201e"+The return value of "collect" must be used.(Šè„üþÿÿÿÿ8ÊÆã’Â3J$7822b546-fa85-4975-ac61-d1cc31b3bf55
 Â
-java:S6204g"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(Šè„üþÿÿÿÿ8Í‚ÙîÁ3J$0405e417-32ca-4c11-a7c1-68785528a72b
-„	java:S125–"<This block of commented-out lines of code should be removed.(ƒå «þÿÿÿÿ8Õ‚ÙîÁ3J$1ba2d2a6-6966-491f-80d8-d51655bbfb5b
-„	java:S125¡"<This block of commented-out lines of code should be removed.(ãÈùËøÿÿÿÿ8Õ‚ÙîÁ3J$6eede561-397c-4f19-9171-d42067310c71
-„	java:S125¨"<This block of commented-out lines of code should be removed.(‰±µÏûÿÿÿÿ8Õ‚ÙîÁ3J$5deb24ba-21f3-46b8-8dfd-40e6b758517a
-„	java:S125­"<This block of commented-out lines of code should be removed.(ñ¹ÿùÿÿÿÿ8Õ‚ÙîÁ3J$8061aba5-69c1-4616-8d11-a8080b7a3571
-„	java:S125²"<This block of commented-out lines of code should be removed.(Ý×øÂüÿÿÿÿ8Ö‚ÙîÁ3J$0529f3b3-6850-4559-a7d0-28651501e702
+java:S6204e"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(Šè„üþÿÿÿÿ8ËÆã’Â3J$b43cfcf5-6d0b-4ad3-b60f-6073a6a425c8
+„	java:S125”"<This block of commented-out lines of code should be removed.(ƒå «þÿÿÿÿ8ÕÆã’Â3J$b9ef0660-fadf-402e-8f13-f7594c0badf4
+„	java:S125Ÿ"<This block of commented-out lines of code should be removed.(ãÈùËøÿÿÿÿ8ÕÆã’Â3J$8635355a-d8e8-4a9d-9df8-33a4b6fa19fc
+„	java:S125¦"<This block of commented-out lines of code should be removed.(‰±µÏûÿÿÿÿ8ÕÆã’Â3J$692c02d7-e54a-45b7-962e-f674dabdcdbf
+„	java:S125«"<This block of commented-out lines of code should be removed.(ñ¹ÿùÿÿÿÿ8ÖÆã’Â3J$dc390e17-fe4b-4be0-9d16-7f1e7d4f8bc2
+„	java:S125°"<This block of commented-out lines of code should be removed.(Ý×øÂüÿÿÿÿ8ÖÆã’Â3J$4e7f2e2d-7d7f-4432-9091-a68d2caff3e7

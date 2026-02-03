@@ -24,26 +24,12 @@
 	</background>
 	<title>
 		<band height="132" splitType="Stretch">
-			<image>
-				<reportElement x="456" y="0" width="99" height="132" uuid="97705585-a0b5-4ec7-86f3-ae10c220e6af"/>
-				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
-			</image>
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
-				<staticText>
-					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
-					<textElement>
-						<font isBold="false"/>
-					</textElement>
-					<text><![CDATA[Cherry Title]]></text>
-				</staticText>
-				<staticText>
-					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
-					<textElement>
-						<font size="22" isBold="false"/>
-					</textElement>
-					<text><![CDATA[Cherry SubTitle]]></text>
-				</staticText>
+				<textField>
+					<reportElement x="20" y="20" width="160" height="30" uuid="0de26394-0f06-4391-8618-ea330192ea79"/>
+					<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+				</textField>
 			</frame>
 			<frame>
 				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
@@ -72,7 +58,7 @@
 				<text><![CDATA[USERNAME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="111" y="7" width="111" height="18" forecolor="#000000" uuid="2d84701c-78b5-4086-871f-28c2efab44bf">
+				<reportElement style="Column header" x="160" y="7" width="111" height="18" forecolor="#000000" uuid="2d84701c-78b5-4086-871f-28c2efab44bf">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2011bf86-8a82-4f3b-b8e6-342f83191cbb"/>
 				</reportElement>
 				<textElement>
@@ -81,7 +67,7 @@
 				<text><![CDATA[HOTEL NAME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="222" y="7" width="111" height="18" forecolor="#000000" uuid="56fc4be0-586c-42b4-bdbc-008f3c589b5b">
+				<reportElement style="Column header" x="310" y="4" width="111" height="18" forecolor="#000000" uuid="56fc4be0-586c-42b4-bdbc-008f3c589b5b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9b317b5b-4bf3-4488-826a-07339115f554"/>
 				</reportElement>
 				<textElement>
@@ -96,7 +82,7 @@
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259"/>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="111" height="18" uuid="2bbae3bf-16fe-477a-9c58-2925664c5e20">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="150" height="18" uuid="2bbae3bf-16fe-477a-9c58-2925664c5e20">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a1d4fc3c-6ecd-48c0-9eb3-3079be0023c6"/>
 					</reportElement>
 					<textElement>
@@ -105,7 +91,7 @@
 					<textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="111" y="0" width="111" height="18" uuid="e32f6ce9-3396-4805-bb67-0c95f2282082">
+					<reportElement style="Detail" positionType="Float" x="160" y="0" width="131" height="18" uuid="e32f6ce9-3396-4805-bb67-0c95f2282082">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2011bf86-8a82-4f3b-b8e6-342f83191cbb"/>
 					</reportElement>
 					<textElement>
@@ -114,7 +100,7 @@
 					<textFieldExpression><![CDATA[$F{hotelName}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Detail" positionType="Float" x="222" y="0" width="111" height="18" uuid="1e0cd29f-75b8-4926-b8e2-bfbfd1693fdf">
+					<reportElement style="Detail" positionType="Float" x="310" y="-1" width="111" height="18" uuid="1e0cd29f-75b8-4926-b8e2-bfbfd1693fdf">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9b317b5b-4bf3-4488-826a-07339115f554"/>
 					</reportElement>
 					<textElement>

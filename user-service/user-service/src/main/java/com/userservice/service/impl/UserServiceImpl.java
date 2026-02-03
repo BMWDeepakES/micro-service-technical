@@ -2,7 +2,6 @@ package com.userservice.service.impl;
 
 import com.userservice.client.HotelFeignClient;
 import com.userservice.client.RatingFeignClient;
-import com.userservice.client.WebClientConfig;
 import com.userservice.dto.Hotel;
 import com.userservice.dto.UserRatingResponse;
 import com.userservice.dto.UserRequest;
@@ -20,18 +19,14 @@ import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Service
@@ -72,7 +67,10 @@ public class UserServiceImpl implements UserService {
 
     private void generateRatingReport(User user, List<Rating> userRating) {
         try {
-            String userReportPath = "/hotel_rating_report.jrxml";
+            String userReportPath = "reports/hotel_rating_report.jrxml";
+            InputStream jrxmlStream =
+                    new ClassPathResource("reports/hotel_rating_report.jrxml")
+                            .getInputStream();
             HashMap<String, Object> ratingReportMap = new HashMap<String, Object>();
             ratingReportMap.put("hotelName",user.getName());
             UserRatingResponse userRatingResponse = userMapper.ratingReponseMapper(user, userRating);
@@ -80,11 +78,11 @@ public class UserServiceImpl implements UserService {
             userRatingResponseList.add(userRatingResponse);
 
             JRBeanCollectionDataSource dataSourceRatingList = new JRBeanCollectionDataSource(userRatingResponseList);
-            JasperReport userReport = JasperCompileManager.compileReport(userReportPath);
+            JasperReport userReport = JasperCompileManager.compileReport(jrxmlStream);
             JasperPrint jasperPrint = JasperFillManager.fillReport(userReport,ratingReportMap,dataSourceRatingList);
             JasperExportManager.exportReportToPdfFile(jasperPrint,"D:\\Microservice Practic\\jasperreports\\userReportdownload.pdf");
         } catch (Exception e) {
-
+              e.printStackTrace();
         }
     }
 
